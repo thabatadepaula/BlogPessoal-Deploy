@@ -12,7 +12,7 @@ function Footer() {
                 <Box style={ { height: "120px" } } >
                     <Box paddingTop={ 2 } display = "flex" alignItems = "center" justifyContent = "center" >
                         <Typography variant="h6" align = "center" gutterBottom style = {{ color: "white" }
-}> Siga - nos nas redes sociais </Typography>
+}> Siga-nos nas redes sociais: </Typography>
     </Box>
     < Box display = "flex" alignItems = "center" justifyContent = "center" >
         <a href="https://www.instagram.com/tthayoliiver/" target = "_blank" rel = "noopener noreferrer" >
@@ -26,7 +26,7 @@ function Footer() {
                         <Box style = {{ height: "60px" }}>
                             <Box paddingTop={ 2 }>
                                 <Typography variant="subtitle2" align = "center" 
-                                            gutterBottom style = {{ color: "white" }} >© 202 Copyright: </Typography>
+                                            gutterBottom style = {{ color: "white" }} >© 2022 Copyright: </Typography>
                                     </Box>
                                     <Box style = {{ height: "60px" }} className = 'bg-menu' >
                                         <a target="_blank" href = "https://brasil.generation.org" rel = "noopener noreferrer" >

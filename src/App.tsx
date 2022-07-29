@@ -3,7 +3,7 @@ import Navbar from './componentes/estaticos/navbar/Navbar';
 import Footer from './componentes/estaticos/footer/Footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from '../src/paginas/home/Home';
-import Login from './paginas/login/Login2';
+import Login from './paginas/login/Login';
 import './App.css';
 
 function App() {
