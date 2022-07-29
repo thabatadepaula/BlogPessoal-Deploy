@@ -1,0 +1,17 @@
+.bg-menu{
+    /* linear-gradient é uma função que permite adicionar Grandiente/Degradê em uma reta no nosso Plano de Fundo */
+    background: linear-gradient(36deg, rgba(168,57,57,1) 0%, rgba(206,160,134,1) 91%);
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* !important indica que essa propriedade é mais importante que as Estilizações Padrões do Material UI */
+.title{
+    font-weight: bold!important;
+}
+.text-decorator-none{
+    text-decoration: none;
+}
