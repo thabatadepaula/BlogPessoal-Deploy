@@ -1,0 +1,22 @@
+ .box1{
+    height: "60px" ;
+    color: white;
+} 
+.redes{
+    font-size: 30px !important;
+    color: white;
+}
+.box2{
+    height: 30px;
+    color: white;
+}
+.textos{
+     color: "white"!important
+}
+.bg-menu2{
+    /* linear-gradient é uma função que permite adicionar Grandiente/Degradê em uma reta no nosso Plano de Fundo */
+    background: linear-gradient(36deg, rgba(168,57,57,1) 0%, rgba(206,160,134,1) 91%)!important;
+    height: 30px !important;
+    
+}
+

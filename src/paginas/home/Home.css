@@ -50,14 +50,19 @@ Nesse caso, o !Important está sobrepondo tudo relacionado ao border-bottom dess
 */
 
 .MuiInput-underline:before{
-    border-bottom: 2px solid #e8d69d!important;
+    border-bottom: 2px solid #f2e4d9!important;
 }
 
 .MuiInput-underline:after{
-    border-bottom: 2px solid #e8d69d!important;
+    border-bottom: 2px solid #f2e4d9!important;
 }
 
 .form-btn{
+    background-color: #a83939!important;
+    color: #ffffff!important;
+}
+
+.botao{
     background-color: #a83939!important;
     color: #ffffff!important;
 }
