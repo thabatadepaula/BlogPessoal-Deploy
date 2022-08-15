@@ -2,26 +2,40 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {Box, Card, CardActions, CardContent, Button, Typography, Alert,} from "@mui/material";
 import "./ListaTema.css";
-import useLocalStorage from "react-use-localstorage";
 import Tema from "../../../models/Tema";
 import { busca } from "../../../services/Service";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { toast } from "react-toastify";
 
 function ListaTema() {
 
   const [temas, setTemas] = React.useState<Tema[]>([]);
-  const [token, setToken] = useLocalStorage('token');
   let navigate = useNavigate();
 
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+  
   React.useEffect(() => {
     if(token == ''){
-      alert("Você precisa estar logado para acessar essa página");
+      toast.error('Você precisa estar logado.', {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress:  undefined,
+      })
       navigate('/login');
     }
   }, [token]);
 
   const getTemas = async () => {
     //adicionar try catch
-    await busca("/tema", setTemas, {
+    await busca("/temas", setTemas, {
     headers: {
       'Authorization':  token
     }

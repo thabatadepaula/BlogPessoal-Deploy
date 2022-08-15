@@ -3,22 +3,36 @@ import {Typography, Button, Card, CardActions, CardContent } from "@material-ui/
 import { Box } from '@mui/material';
 import './DeletarPostagem.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import Postagem from '../../../models/Postagem';
 import { buscaId, deleteId } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
 
 function DeletarPostagem() {
 
   let navigate = useNavigate();
   const { id } = useParams<{ id: string }>(); // id do tema a ser editado
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   const [post, setPosts] = useState<Postagem>();
 
   useEffect(() => {
     if(token == ""){
-        alert("Você precisa estar logado para acessar essa página");
+      toast.error('Você precisa estar logado.', {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress:  undefined,
+      })
+    navigate("/login")
         navigate("/login");
     }
     }, [token]);
@@ -39,13 +53,22 @@ function DeletarPostagem() {
     };
 
     const sim = () => {
-        navigate("/posts");
-        deleteId(`/postagem/${id}`, {
+        navigate("/postagens");
+        deleteId(`/postagens/${id}`, {
             headers: {
                 'Authorization': token
             }
         });
-        alert("Postagem deletada com sucesso");
+        toast.success('Postagem deletada com sucesso.', {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress:  undefined,
+        })
     }
     const nao = () => {
         navigate("/posts");

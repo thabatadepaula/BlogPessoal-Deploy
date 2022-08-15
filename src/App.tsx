@@ -11,11 +11,17 @@ import ListaPostagem from './componentes/postagens/listapostagem/ListaPostagem';
 import CadastroPost from './componentes/postagens/cadastroPost/CadastroPost';
 import CadastroTema from './componentes/temas/cadastroTema/CadastroTema';
 import DeletarPostagem from './componentes/postagens/deletarPostagem/DeletarPostagem';
+import {Provider} from 'react-redux';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import DeletarTema from './componentes/temas/deletarTema/DeletarTema';
+import store from './store/store';
 
 
 function App() {
   return (
+    <Provider store={store}>
+      <ToastContainer />
     <Router>
       <Navbar />
       <div style={{ minHeight: '100vh' }}>
@@ -31,7 +37,7 @@ function App() {
 
         <Route path="/temas" element={<ListaTema />} />
 
-        <Route path="/posts" element={<ListaPostagem />} />
+        <Route path="/postagens" element={<ListaPostagem />} />
 
         <Route path="/formularioPostagem" element={<CadastroPost />} />
 
@@ -50,6 +56,7 @@ function App() {
       </div>
       <Footer />
     </Router>
+    </Provider>
 
   );
 }

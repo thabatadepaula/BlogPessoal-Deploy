@@ -3,9 +3,11 @@ import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem,
 import './CadastroPost.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import Tema from '../../../models/Tema';
-import useLocalStorage from 'react-use-localstorage';
 import Postagem from '../../../models/Postagem';
 import { busca, buscaId, post, put } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
 
 
@@ -15,11 +17,23 @@ function CadastroPost() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [temas, setTemas] = useState<Tema[]>([])
-    const [token, setToken] = useLocalStorage('token')
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+      );
+
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error('Você precisa estar logado.', {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress:  undefined,
+              })
             navigate("/login")
 
         }
@@ -53,7 +67,7 @@ function CadastroPost() {
 
 
     const getTemas = async () => {
-        await busca('/tema', setTemas, {
+        await busca('/temas', setTemas, {
             headers: {
                 'Authorization': token
         }
@@ -61,7 +75,7 @@ function CadastroPost() {
     }
 
     const findByIdPostagem = async (id: string) => {
-        await buscaId(`/postagem/${id}`, setPostagem, {
+        await buscaId(`/postagens/${id}`, setPostagem, {
             headers: {
                 'Authorization': token
         }
@@ -82,26 +96,44 @@ function CadastroPost() {
         e.preventDefault()
 
         if (id !== undefined) {
-            put(`/postagem`, postagem, setPostagem, {
+            put(`/postagens`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Postagem atualizada com sucesso');
+            toast.success('Postagem atualizada com sucesso.', {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress:  undefined,
+              })
         } else {
-            post(`/postagem`, postagem, setPostagem, {
+            post(`/postagens`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Postagem cadastrada com sucesso');
+            toast.success('Postagem cadastrada com sucesso.', {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress:  undefined,
+              })
         }
         back()
 
     }
 
     function back() {
-        navigate('/posts')
+        navigate('/postagens')
     }
 
 
@@ -116,10 +148,10 @@ function CadastroPost() {
 
                 <FormControl  >
                     <InputLabel id="demo-simple-select-helper-label">Tema </InputLabel>
-                    <Select
-                        labelId="demo-simple-select-helper-label"
+                    <Select    
+                        labelId="demo-simple-select-helper-label" 
                         id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/tema/${e.target.value}`, setTema, {
+                        onChange={(e) => buscaId(`/temas/${e.target.value}`, setTema, {
                             headers: {
                                 'Authorization': token
                             }

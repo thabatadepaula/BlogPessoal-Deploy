@@ -3,13 +3,16 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import UserLogin from "../../models/UserLogin";
-import useLocalStorage from "react-use-localstorage";
 import { login } from "../../services/Service";
+import { useDispatch } from "react-redux";
+import { addToken } from "../../store/tokens/actions";
+import { toast } from "react-toastify";
 
 function Login() {
 
   let history = useNavigate();
-  const [token, setToken] = useLocalStorage("token");
+  const dispatch = useDispatch();
+  const [token, setToken] = useState("");
   const [userLogin, setUserLogin] = useState<UserLogin>({
     id: 0,
     nome: '',
@@ -31,14 +34,31 @@ function Login() {
     e.preventDefault();
     try{
       await login(`/usuarios/logar`, userLogin, setToken);
-      alert ("Login realizado com sucesso!");
+      toast.success('Login realizado com sucesso!', {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        });
     } catch(error){
-       alert('Dados do usuario incorretos!');
+      toast.error('Dados do usuário insistentes.', {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        });
     }
   }
 
   useEffect(() => {
     if (token != "") {
+      dispatch(addToken(token));
       history("/home");
     }
   }, [token]);

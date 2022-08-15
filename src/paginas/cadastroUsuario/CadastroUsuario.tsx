@@ -5,6 +5,7 @@ import { cadastroUsuario } from '../../services/Service';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import './CadastroUsuario.css'
+import { toast } from 'react-toastify';
 
 function CadastroUsuario() {
 
@@ -53,25 +54,50 @@ function CadastroUsuario() {
       if (confirmarSenha === user.senha && user.senha.length >= 8) {
 
           
-        try {
-          await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-          alert("Usuário cadastrado com sucesso")
+       //Tenta executar o cadastro
+       try {
+        await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+        toast.success('Usuário cadastrado com sucesso!', {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          });  
+    //Se houver erro, pegue o Erro e retorna uma msg
+    } catch (error) {
+        console.log(`Error: ${error}`)
+        
+        //Pode modificar a msg de acordo com o erro 
+        toast.info('Usuário já existente!', {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          });
+    }
 
-         
-          } catch (error) {
-              console.log(`Error: ${error}`)
-              
-              
-              alert("Usuário já existente")
-          }
+} else {
+  toast.info('Insira no miníno 8 caracteres na senha.', {
+    position: "top-right",
+    autoClose: 2500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    });  // Mensagem que indica a quantidade minima de caracteres
 
-      } else {
-          alert("Insira no miníno 8 caracteres na senha.")    
+    setUser({ ...user, senha: "" }) // Reinicia o campo de Senha
+    setConfirmarSenha("")           // Reinicia o campo de Confirmar Senha
+}
+}
 
-          setUser({ ...user, senha: "" })
-          setConfirmarSenha("")           
-      }
-  }
 
   return (
    <Grid container direction='row' justifyContent='center' alignItems='center'>
