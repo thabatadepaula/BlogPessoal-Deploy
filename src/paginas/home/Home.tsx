@@ -1,8 +1,8 @@
-import { Link } from "@mui/icons-material";
+
 import { Grid, Box, Typography, Button } from "@mui/material";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ModalPostagem from "../../componentes/postagens/modalPostagem/ModalPostagem";
 import TabPostagem from "../../componentes/postagens/tabpostagem/TabPostagem";
@@ -61,17 +61,17 @@ function Home() {
               align="center"
               className="titulo"
             >
-              Compartilhe suas experiências e deixe o seu maternar mais leve!
+              Expresse aqui os seus pensamentos e deixe seu maternar mais leve!
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">
             <Box marginRight={1}>
-              <ModalPostagem/>
+              <ModalPostagem />
             </Box>
-            <Link to="/postagens" className="text-decorator-none">
-            <Button variant="outlined" className="botao">
-              Ver Postagens
-            </Button>
+            <Link to="/postagens" className="text-decorator-none bg-btnhome" >
+              <Button variant="outlined" className="btn">
+                Ver Postagens
+              </Button>
             </Link>
           </Box>
         </Grid>

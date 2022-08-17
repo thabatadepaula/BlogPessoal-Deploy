@@ -27,7 +27,15 @@ function TabPostagem() {
         </TabPanel>
         <TabPanel value="2">
           <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className="titulo">Sobre-nós</Typography>
-          <Typography variant="body1" gutterBottom color="textPrimary" align="justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos ut eveniet natus totam et, voluptate dicta tempore alias, odio nobis non eius cupiditate minima inventore pariatur! Ipsum itaque consectetur voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo velit consequuntur suscipit fugiat, nam quis quod quaerat veritatis et, vel ratione beatae, facere neque! Quo animi porro voluptate saepe deleniti? Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore adipisci, officia aut quidem dolorum deserunt iure dolorem doloribus velit nobis quas consequatur at ullam odit, nesciunt est nulla nihil excepturi!</Typography>
+          <Typography variant="body1" gutterBottom color="textPrimary" align="justify"> Meu nome é Thabata, sou Desenvolvedora Web Java e mãe!
+            Apaixonada por tecnologia, estudo gestão de tecnologia da informação 
+            e me participei do Bootcamp Java da Generation, onde nasceu este projeto. 
+            Também adoro livros e artes em geral.
+            Adoro me arriscar nas artes digitais e em novos desafios. 
+            Meu objetivo aqui é criar um espaço onde mães possam se acolher e se ajudar.
+            Meus planos pessoais é me formar em desenvolvimento de sistemas, 
+            trabalhar em projetos que ajudem a transformar a sociedade, com diversidade sexual, formação e empoderamento de mulheres periféricas, 
+            combatendo a desigualdade social e racial. Juntes somos mais fortes!!</Typography>
         </TabPanel>
       </TabContext>
     </>

@@ -2,7 +2,10 @@
     cursor: pointer;
 }
 
-.btnModal{
-    border-color: white !important;
-    background-color: white !important;
+
+.bg-btnmodal{
+    background-color: #cea086 !important;
+    border-radius: 05px !important;
+    border: 1px solid #a83939 !important;
+    color: white!important;
 }
