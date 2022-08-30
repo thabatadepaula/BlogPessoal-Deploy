@@ -2,3 +2,28 @@
 .text-decorator-none{
     text-decoration: none;
 }
+.botao-atualizar{
+    border-color: #fdfaf2 !important;
+    background-color: #a83938 !important;
+    color: #fdfaf2 !important;
+    display: flex;
+    align-items: center;
+    border-radius: 20px !important;
+  }
+  .botao-deletar{
+    border-color: white !important;
+    background-color: #cea086 !important;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    border-radius: 20px !important;
+}
+.botao-deletar:hover {
+  border-color: #fdfaf2 !important;
+  background-color: #cea086 !important;
+  color: #fdfaf2 !important;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  transition: 300ms;
+}

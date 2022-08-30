@@ -7,7 +7,7 @@
  }
  
  body::-webkit-scrollbar{
-    background-color: aliceblue;
+    background-color: var(--corclara);
 }
 
 body::-webkit-scrollbar-thumb{

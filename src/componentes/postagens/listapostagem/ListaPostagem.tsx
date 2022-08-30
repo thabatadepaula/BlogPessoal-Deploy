@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import {Box} from '@mui/material';
+import {Box, CardActionArea, CardMedia, Grid} from '@mui/material';
 import { busca } from '../../../services/Service';
 import './ListaPostagem.css';
 import Postagem from '../../../models/Postagem';
@@ -51,36 +51,48 @@ function ListaPostagem() {
     <>
       {
         posts.map(post => (
+          
           <Box m={2} >
-            <Card variant="outlined">
-              <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Postagens
-                </Typography>
-                <Typography variant="h5" component="h2">
+            <Card >
+            <CardContent className='textpost'>
+                <CardActionArea >
+                  <CardMedia
+                    className='cardpost'
+                    component="img"
+                    src={post.foto}
+                    title="foto"
+                  />
+                 
+                </CardActionArea>
+              </CardContent>
+              <CardContent className='textpost'>
+                
+                  <Typography variant="body2" component="p" className="textpost">
+                  {post.tema?.descricao}
+                <Typography variant="h5" component="h2" >
                   {post.titulo}
                 </Typography>
                 <Typography variant="body2" component="p">
                   {post.texto}
                 </Typography>
-                <Typography variant="body2" component="p">
-                  {post.tema?.descricao}
+                
                 </Typography>
+               
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
                   <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                     <Box mx={1}>
-                      <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                        atualizar
+                      <Button variant="contained" className="marginLeft botao-atualizar" size='small' color="primary" >
+                        Atualizar
                       </Button>
                     </Box>
                   </Link>
                   <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
                     <Box mx={1}>
-                      <Button variant="contained" size='small' color="secondary">
-                        deletar
+                      <Button variant="contained" size='small' className="botao-deletar">
+                        Deletar
                       </Button>
                     </Box>
                   </Link>

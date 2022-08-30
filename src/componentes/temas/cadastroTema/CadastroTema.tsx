@@ -1,6 +1,7 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@mui/material"
 import Tema from '../../../models/Tema';
+import './CadastroTema.css'
 import { buscaId, post, put } from '../../../services/Service';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -105,11 +106,11 @@ function CadastroTema() {
   
   
       return (
-          <Container maxWidth="sm" className="topo">
-              <form onSubmit={onSubmit}>
-                  <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro tema</Typography>
+          <Container maxWidth="sm" className="topo formtema">
+              <form onSubmit={onSubmit} >
+                  <Typography variant="h3" color="textSecondary" component="h1" align="center" className='formtema' >Cadastre um novo tema</Typography>
                   <TextField value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)} id="descricao" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
-                  <Button type="submit" variant="contained" color="primary">
+                  <Button type="submit" variant="contained" color="primary" className='formu'>
                       Finalizar
                   </Button>
               </form>

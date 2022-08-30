@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
+import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText, } from "@material-ui/core"
 import './CadastroPost.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import Tema from '../../../models/Tema';
@@ -8,6 +8,7 @@ import { busca, buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
+import { Grid } from '@mui/material';
 
 
 
@@ -48,6 +49,7 @@ function CadastroPost() {
         titulo: "",
         texto: "",
         data: "",
+        foto: "",
         tema: null
     })
 
@@ -140,14 +142,47 @@ function CadastroPost() {
 
  
     return (
-        <Container maxWidth="sm" className="topo">
+        <Grid
+          container
+          maxWidth="50vw"
+          maxHeight="100vh"
+          className="bg-cadastrar-post form"
+        >
+        <Container maxWidth="sm" className="topo form">
             <form onSubmit={onSubmit} >
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro postagem</Typography>
-                <TextField value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}  id="titulo" label="titulo" variant="outlined" name="titulo" margin="normal" fullWidth />
-                <TextField value={postagem.texto}  onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="texto" label="texto" name="texto" variant="outlined" margin="normal" fullWidth />
+                <Typography variant="h3" 
+                color="textSecondary" 
+                component="h1" 
+                align="center" className='form' >Cadastre uma nova postagem</Typography>
+                
+                <TextField value={postagem.titulo} 
+                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}  
+                id="titulo" 
+                label="Título" 
+                variant="outlined" 
+                name="titulo" 
+                margin="normal" fullWidth />
+                
+                <TextField value={postagem.texto}  
+                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} 
+                id="texto" 
+                label="Texto" 
+                name="texto"
+                variant="outlined" 
+                margin="normal" fullWidth />
 
+                 <TextField
+              value={postagem.foto}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}
+              id="foto"
+              label="Foto"
+              variant="outlined"
+              name="foto"
+              margin="normal"
+              fullWidth
+            />
                 <FormControl  >
-                    <InputLabel id="demo-simple-select-helper-label">Tema </InputLabel>
+                    <InputLabel id="demo-simple-select-helper-label" className='form'>Tema </InputLabel>
                     <Select    
                         labelId="demo-simple-select-helper-label" 
                         id="demo-simple-select-helper"
@@ -169,6 +204,7 @@ function CadastroPost() {
                 </FormControl>
             </form>
         </Container>
+        </Grid>
     )
 }
 export default CadastroPost;

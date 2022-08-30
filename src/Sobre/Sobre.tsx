@@ -2,11 +2,11 @@ import React, {useState} from 'react'
 import { AppBar, Tab, Tabs, Typography } from '@material-ui/core';
 import {Box, Card, CardActionArea, CardContent, CardMedia} from '@mui/material';
 import { TabContext, TabPanel } from '@material-ui/lab';
-import ListaPostagem from '../listapostagem/ListaPostagem';
-import './TabPostagem.css';
 
 
-function TabPostagem() {
+
+
+function Sobre() {
     const [value, setValue] = useState('1')
     function handleChange(event: React.ChangeEvent<{}>, newValue: string){
         setValue(newValue);
@@ -14,17 +14,6 @@ function TabPostagem() {
   return (
     <>
       <TabContext value={value}>
-        <AppBar position="static" className='backgroundtab' >
-          <Tabs centered indicatorColor="secondary" onChange={handleChange} >
-            <Tab label="Todas as postagens" value="1" className="titulo3"/>
-            <Tab label="Sobre-nós" value="2" className="titulo3"/>
-          </Tabs>
-        </AppBar>
-        <TabPanel value="1">
-          <Box display="flex" flexWrap="wrap" justifyContent="center">
-            <ListaPostagem />
-          </Box>
-        </TabPanel>
         <TabPanel value="2">
         <Card>
           <CardContent>
@@ -58,4 +47,4 @@ function TabPostagem() {
     </>
   );
 }
-export default TabPostagem;
+export default Sobre;

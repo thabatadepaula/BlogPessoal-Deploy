@@ -1,3 +1,26 @@
 .titulo{
     font-weight: bold;
+    
+    
+ }
+ .titulo2{
+    font-weight: bold;
+    font-size: 30px;
+    
+ }
+ .titulo3{
+    font-weight: bold;
+    font-size: 20px;
+    align-items: center;
+    
+ }
+ .backgroundtab{
+    background: var(--color-invertida);
+}
+.br-50 {
+    border-radius: 50%;
+ }
+ .wh {
+    width: 300px;
+    height: 300;
  }
