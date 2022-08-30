@@ -28,11 +28,11 @@ function TabPostagem() {
         <TabPanel value="2">
         <Card>
           <CardContent>
-                <CardActionArea >
+                <CardActionArea  className='wwh' >
                   <CardMedia
                     className='br-50 wh'
                     component="img"
-                    src="https://i.imgur.com/JDCtgii.jpg"
+                    src="https://i.imgur.com/rh8l4ts.jpg"
                     title="foto"
                   />
                  

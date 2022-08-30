@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import {Box, CardActionArea, CardMedia, Grid} from '@mui/material';
+import {Box, CardActionArea, CardMedia} from '@mui/material';
 import { busca } from '../../../services/Service';
 import './ListaPostagem.css';
 import Postagem from '../../../models/Postagem';
